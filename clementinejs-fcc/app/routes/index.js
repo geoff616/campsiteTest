@@ -31,9 +31,9 @@ module.exports = function (app, passport) {
 			res.redirect('/login');
 		});
 
-	app.route('/profile')
+	app.route('/addCampsite')
 		.get(isLoggedIn, function (req, res) {
-			res.sendFile(path + '/public/profile.html');
+			res.sendFile(path + '/public/addCampsite.html');
 		});
 
 	app.route('/api/:id')

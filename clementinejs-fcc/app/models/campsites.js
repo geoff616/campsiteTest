@@ -15,19 +15,18 @@ var Schema = mongoose.Schema;
 //display boolean Display/Don't Display (for Moderation)
 
 var Campsite = new Schema({
-  _id: String, //primary key
+  id: String, //primary key
   location: {
     city: String,
     country: String,
     subdivision: String,
-    loc: { type: [Number], index: '2dsphere'} //tell mongo loc is a geo point
-    //maybe change to typ
+    loc: { type: [Number], index: '2dsphere'}, //tell mongo loc is a geo point
     googleID: String
   },
   url: String, //URL type?
   createdBy: String, //Object ID
   createdOn: Date,
-  display: boolean //for moderator
+  display: Boolean //for moderator
 });
 
 module.exports = mongoose.model('Campsite', Campsite);

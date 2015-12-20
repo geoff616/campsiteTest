@@ -10,7 +10,10 @@ var User = new Schema({
 		username: String,
       publicRepos: Number
 	},
-  isModerator: Boolean
+  isModerator: Boolean,
+   nbrClicks: {
+      clicks: Number
+   }
 });
 
 module.exports = mongoose.model('User', User);
