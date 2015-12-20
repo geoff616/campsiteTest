@@ -3,36 +3,48 @@
 <html>
 
 	<head>
-		<title>Add a new Campsite</title>
-		
-		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+		<title>Find a campsite near you!</title>
 		<link href="/public/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="/public/js/jquery.js"></script>
 		<script type="text/javascript" src="/public/js/bootstrap.js"></script>
 	</head>
 
-	<body>
+	<header>
+		<a class="menu" href="/">Home</a>
+		<p>|</p>
+		<a class="menu" href="/logout">Logout</a>
+	</header>
 		<div class="container">
-		<div class="jumbotron"><h2>Add your campsite:</h2></div>
+			<div class="jumbotron">
+				<h2>Add your campsite:</h2>
+				<h4>Find the location of your campsite in the searchbox.</h4>
+			</div>
+			<input id="pac-input" class="controls" type="text" placeholder="Search Box">
 			<div class="addCampsite">
+				<div id="map"></div>
 				<form class="form-horizontal">
-        <div class="form-group">
-            <label for="" class="control-label col-xs-2">Campsite URL</label>
-            <div class="col-xs-10">
-                <input type="email" class="form-control" id="inputURL" placeholder="Facebook Group URL">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-offset-2 col-xs-10">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-    </form>
+	        <div class="form-group">
+	            <label for="" class="control-label col-xs-2">Campsite URL</label>
+	            <div class="col-xs-10">
+	                <input type="email" class="form-control" id="campsiteURL" placeholder="Facebook Group URL">
+	            </div>
+	        </div>
+	        <div class="form-group">
+	            <div class="col-xs-offset-2 col-xs-10">
+	                <button type="submit" class="btn btn-primary">Submit</button>
+	            </div>
+	        </div>
+	    </form>
 			</div>
 		</div>
-		
+
+		<script type="text/javascript" src="common/searchGoogleMaps.js"></script>
 		<script type="text/javascript" src="common/ajax-functions.js"></script>
 		<script type="text/javascript" src="controllers/userController.client.js"></script>
+		<!--NOTE: NEED TO REPLACE THIS API KEY! -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2hRixYw_r3a4kBERstBT2ieEZose6zRU&libraries=places&callback=initAutocomplete"
+         async defer></script>
 	</body>
 
 </html>

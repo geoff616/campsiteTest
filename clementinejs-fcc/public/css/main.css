@@ -34,10 +34,10 @@ p {
   margin: 8px 0 0 0;
 }
 
-/***.container p {
+.container p {
   text-align: center;
   padding: 0;
-} **/
+} 
 
 
 /****** Header Styling ******/
@@ -118,7 +118,7 @@ img {
 
 .addCampsite {
   width: 950px;
-  height: 700px;
+  height: 75%;
   border-radius: 3px;
   margin: 86px auto 0 auto;
   background-color: #EEE;
@@ -130,9 +130,9 @@ img {
 }
 
 .addCampsite p:first-child {
-  padding-top: 16px;
+  padding-top: 10px;
 }
-
+/***
 .addCampsite p:nth-child(5) {
   margin-bottom: 16px
 }
@@ -168,4 +168,102 @@ span {
   display: inline;
   margin: 0;
 }
+**/
 
+/****** Click Styling ******/
+
+.btn-container {  /* Styling for the div that contains the buttons */
+  margin: -10px auto 0 auto;
+  text-align: center;
+}
+
+.btn {  /* Styling for buttons */
+  margin: 0 8px;
+  color: white;
+  background-color: #00BCD4;
+  display: inline-block;
+  border: 0;
+  font-size: 14px;
+  border-radius: 3px;
+  padding: 10px 5px;
+  width: 100px;
+  font-weight: 500;
+}
+
+.btn:focus {  /* Remove outline when hovering over button */
+  outline: none;
+}
+
+.btn:active { /* Scale the button down by 10% when clicking on button */
+  transform: scale(0.9, 0.9);
+  -webkit-transform: scale(0.9, 0.9);
+  -moz-transform: scale(0.9, 0.9);
+}
+
+.btn-delete { /* Styling for delete button */
+  background-color: #ECEFF1;
+  color: #212121;
+}
+
+#click-nbr {
+  font-weight: 400;
+}
+
+/****** Google Maps Styling ******/
+
+/****** html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }******/
+#map {
+  height: 300px;
+  text-align: center;
+}
+
+
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#target {
+        width: 345px;
+      }
