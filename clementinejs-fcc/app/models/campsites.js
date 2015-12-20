@@ -20,7 +20,8 @@ var Campsite = new Schema({
     city: String,
     country: String,
     subdivision: String,
-    loc: { type: [Number], index: '2d'} //tell mongo loc is a geo point
+    loc: { type: [Number], index: '2dsphere'} //tell mongo loc is a geo point
+    //maybe change to typ
     googleID: String
   },
   url: String, //URL type?
