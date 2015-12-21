@@ -2,32 +2,46 @@
 
 (function () {
 
-   var addButton = document.querySelector('.btn-add');
-   var deleteButton = document.querySelector('.btn-delete');
-   var clickNbr = document.querySelector('#click-nbr');
-   var apiUrl = appUrl + '/api/:id/clicks';
 
-   function updateClickCount (data) {
-      var clicksObject = JSON.parse(data);
-      clickNbr.innerHTML = clicksObject.clicks;
+   var newCampsiteSubmit = document.querySelector('#newCampsiteSubmit');
+   
+
+   function parseGoogleLocation(loc) {
+      var toReturn = {
+         city: loc.address_components.filter(function(part){return part.types[0] === "locality"})[0].long_name,
+         subdivision: loc.address_components.filter(function(part){return part.types[0] === "administrative_area_level_1"})[0].long_name,
+         country:loc.address_components.filter(function(part){return part.types[0] === "country"})[0].long_name,
+         loc:[globalPlace.geometry.location.lng(), globalPlace.geometry.location.lat()],
+         googleID: loc.id
+      }
+
+
+      return toReturn;
    }
 
-   ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, updateClickCount));
+   newCampsiteSubmit.addEventListener('click', function () {
 
-   addButton.addEventListener('click', function () {
+      console.log('in here');
+      var locationObj = parseGoogleLocation(globalPlace);
 
-      ajaxFunctions.ajaxRequest('POST', apiUrl, function () {
-         ajaxFunctions.ajaxRequest('GET', apiUrl, updateClickCount);
+
+      var objToStore = {
+         url: $('#campsiteURL').val(),
+         location: locationObj,
+      }
+      console.log(objToStore)
+      //maybe move this somewhere else?
+      $.ajax({
+        type: "POST",
+        url: "/api/addCampsite",
+        data: JSON.stringify(objToStore),
+        contentType: "application/json",
+        dataType:'json',
+        success: function() {console.log('success')}
       });
 
+         
    }, false);
 
-   deleteButton.addEventListener('click', function () {
-
-      ajaxFunctions.ajaxRequest('DELETE', apiUrl, function () {
-         ajaxFunctions.ajaxRequest('GET', apiUrl, updateClickCount);
-      });
-
-   }, false);
 
 })();

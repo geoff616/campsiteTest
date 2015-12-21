@@ -85,11 +85,12 @@ function initAutocomplete() {
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
+      //NOTE: Making this global, but shuold pass to a function somehow
+      //ALSO: This assumes only one place has been selected, which might not be the case if
+      //a user's search result has yielded many results
       globalPlace = place;
-      var geocoder = new google.maps.Geocoder;
-      geocoder.geocode({'placeId': place.id}, function(results, status) {
-        results;
-      })
+
+
       // Create a marker for each place.
       markers.push(new google.maps.Marker({
         map: map,

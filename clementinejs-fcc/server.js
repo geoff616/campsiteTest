@@ -5,10 +5,14 @@ var routes = require('./app/routes/index.js');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
+var bodyParser = require('body-parser');
+var moment = require('moment-timezone');
+
 
 var app = express();
 require('dotenv').load();
 require('./app/config/passport')(passport);
+
 
 mongoose.connect(process.env.MONGO_URI);
 
@@ -24,6 +28,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.json());
 
 routes(app, passport);
 

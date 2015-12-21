@@ -1,41 +1,27 @@
 'use strict';
 
-var Users = require('../models/users.js');
+var Campsites = require('../models/campsites.js');  
+var Users = require('../models/users.js');  
+var moment = require('moment-timezone');      
 
 function ClickHandler () {
 
-	this.getClicks = function (req, res) {
-		Users
-			.findOne({ 'github.id': req.user.github.id }, { '_id': false })
-			.exec(function (err, result) {
-				if (err) { throw err; }
+	this.addCampsite = function (req, res) {
 
-				res.json(result.nbrClicks);
-			});
-	};
+		var objToStore = req.body;
+    objToStore.createdByDisplayName = req.user.github.displayName;
+    objToStore.createdByUsername = req.user.github.username;
+    objToStore.createdAt = moment().tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a') //east coast bias!
 
-	this.addClick = function (req, res) {
-		Users
-			.findOneAndUpdate({ 'github.id': req.user.github.id }, { $inc: { 'nbrClicks.clicks': 1 } })
-			.exec(function (err, result) {
-					if (err) { throw err; }
 
-					res.json(result.nbrClicks);
-				}
-			);
-	};
 
-	this.resetClicks = function (req, res) {
-		Users
-			.findOneAndUpdate({ 'github.id': req.user.github.id }, { 'nbrClicks.clicks': 0 })
-			.exec(function (err, result) {
-					if (err) { throw err; }
+		var newCampsite = new Campsites(objToStore);
 
-					res.json(result.nbrClicks);
-				}
-			);
-	};
-
+    newCampsite.save(function (err, res) {
+      if (err) return console.error(err);
+      console.log(res);
+    });
+    res.end('great success')
+	}
 }
-
 module.exports = ClickHandler;

@@ -15,7 +15,7 @@ var Schema = mongoose.Schema;
 //display boolean Display/Don't Display (for Moderation)
 
 var Campsite = new Schema({
-  id: String, //primary key
+  //id: String, //primary key - NOTE: I think this will be there by default
   location: {
     city: String,
     country: String,
