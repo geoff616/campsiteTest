@@ -9,11 +9,11 @@ function ClickHandler () {
 	this.addCampsite = function (req, res) {
 
 		var objToStore = req.body;
-    objToStore.createdByDisplayName = req.user.github.displayName;
-    objToStore.createdByUsername = req.user.github.username;
-    objToStore.createdAt = moment().tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a') //east coast bias!
-
-
+    objToStore['createdByDisplayName'] = req.user.github.displayName;
+    objToStore['createdByUsername'] = req.user.github.username;
+    objToStore['createdAtDisplay'] = moment().tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a') 
+    objToStore['createdAtTimestamp'] = moment().tz('America/New_York').format('x') //#eastcoastbias!
+    objToStore['display'] = false;
 
 		var newCampsite = new Campsites(objToStore);
 

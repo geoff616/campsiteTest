@@ -7,10 +7,25 @@
    
 
    function parseGoogleLocation(loc) {
+
+      function addAddressComponent(loc, partName) {
+        try{
+          return loc.address_components.filter(function(part){return part.types[0] === partName})[0].long_name
+        } catch(e){
+          if (partName === "locality") {
+            return addAddressComponent(loc, "sublocality_level_1")
+          } else {
+            return "missing from this location"  
+          }
+          
+        }
+      }
+
+
       var toReturn = {
-         city: loc.address_components.filter(function(part){return part.types[0] === "locality"})[0].long_name,
-         subdivision: loc.address_components.filter(function(part){return part.types[0] === "administrative_area_level_1"})[0].long_name,
-         country:loc.address_components.filter(function(part){return part.types[0] === "country"})[0].long_name,
+         city: addAddressComponent(loc, "locality"),
+         subdivision: addAddressComponent(loc, "administrative_area_level_1"),
+         country: addAddressComponent(loc, "country"),
          loc:[globalPlace.geometry.location.lng(), globalPlace.geometry.location.lat()],
          googleID: loc.id
       }

@@ -24,8 +24,10 @@ var Campsite = new Schema({
     googleID: String
   },
   url: String, //URL type?
-  createdBy: String, //Object ID
-  createdOn: Date,
+  createdByDisplayName: String, 
+  createdByUsername: String,
+  createdAtDisplay : String, 
+  createdAtTimestamp : Date,
   display: Boolean //for moderator
 });
 
