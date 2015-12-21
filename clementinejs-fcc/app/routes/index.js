@@ -2,6 +2,7 @@
 
 var path = process.cwd();
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
+var QueryMongo = require(path + '/app/controllers/queryMongo.server.js');
 
 module.exports = function (app, passport) {
 
@@ -15,6 +16,7 @@ module.exports = function (app, passport) {
 	}
 
 	var clickHandler = new ClickHandler();
+	var queryMongo = new QueryMongo();
 
 	app.route('/')
 		.get(isLoggedIn, function (req, res) {
@@ -54,4 +56,7 @@ module.exports = function (app, passport) {
 
 	app.route('/api/addCampsite')
 		.post(isLoggedIn, clickHandler.addCampsite);
+
+	app.route('/api/getCampsites')
+		.post(isLoggedIn, queryMongo.findCampsites);
 };
