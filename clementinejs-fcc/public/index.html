@@ -21,10 +21,8 @@
 			<a class="menu" href="/logout">Logout</a>
 		</div>	
 	
-		<div class=>
-		<img class="campsite-banner" src="/public/img/wide-social-banner.png" />
-		</div>	
-		<br />
+		<div id="map"></div>	
+
 	
 		<table class="table table-hover">
 	    <thead>
@@ -42,8 +40,10 @@
 		
 	</div>
 	
-	<script type="text/javascript" src="common/ajax-functions.js"></script>
-		
+	<script type="text/javascript" src="common/homepageMap.js"></script>	
+	<!--NOTE: NEED TO REPLACE THIS API KEY! -->
+	<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2hRixYw_r3a4kBERstBT2ieEZose6zRU&signed_in=true&callback=initMap"></script>
 	</body>
 
 </html>

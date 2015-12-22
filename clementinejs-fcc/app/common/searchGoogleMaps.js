@@ -7,7 +7,7 @@
 
 function initAutocomplete() {
 
-  var map = new google.maps.Map(document.getElementById('map'), {
+  var map = new google.maps.Map(document.getElementById('searchMap'), {
       center: {lat: 14.397, lng: 150.644},
       zoom: 13,
       mapTypeId: google.maps.MapTypeId.ROADMAP
