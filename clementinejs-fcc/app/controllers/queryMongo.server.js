@@ -8,10 +8,22 @@ function QueryMongo () {
 
   this.findCampsites = function (req, res) {
 
-    var location = req.body.location
+    var loc = req.body
+    var coords = [loc.lng, loc.lat]
 
+     Campsites.find({
+//      loc: {
+//        $near: coords//,
+//        //$maxDistance: maxDistance
+//      }
+    }).exec(function(err, campsites) {
+      if (err) {
+        return res.status(500).json(err);
+      }
 
-    res.end('great success')
+      res.status(200).json(campsites);
+    });
+
   }
 }
 module.exports = QueryMongo;

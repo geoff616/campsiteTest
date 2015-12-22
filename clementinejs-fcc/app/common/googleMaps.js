@@ -1,3 +1,7 @@
+function displayCampsites(data) {
+  console.log(data);
+}
+
 function centerIfLocationEnabled(map) {
  // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -9,22 +13,51 @@ function centerIfLocationEnabled(map) {
 
       map.setCenter(pos);
     }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
+      handleLocationError(true,  map.getCenter());
     });
   } else {
     // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
+    handleLocationError(false, map.getCenter());
   }
 }
 
 
 function makeHomepageMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 2,
-    center: {lat: -33, lng: 151}
+  var pos, map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: {lat: 40.730610, lng: -73.935242}
   });
 
   centerIfLocationEnabled(map)
+  
+
+  //couldnt figure out how to resuse navigator from above function :(
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      var campsites = $.ajax({
+        type: "POST",
+        url: "/api/queryCampsites",
+        data: JSON.stringify(pos),
+        contentType: "application/json",
+        dataType:'json',
+        success: displayCampsites
+      });
+
+     
+    })
+  } else {
+    // Browser doesn't support Geolocation
+
+  }
+
+  
+  
 
   var image = '/public/img/campsite.png';
 
@@ -52,11 +85,10 @@ function makeHomepageMap() {
 function makeSearchMap() {
 
   var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 14.397, lng: 150.644},
-      zoom: 13,
+      center: {lat: 40.730610, lng: -73.935242},
+      zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
-    //var infoWindow = new google.maps.InfoWindow({map: map});
 
    centerIfLocationEnabled(map);
   

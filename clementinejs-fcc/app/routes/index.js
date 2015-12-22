@@ -57,6 +57,6 @@ module.exports = function (app, passport) {
 	app.route('/api/addCampsite')
 		.post(isLoggedIn, clickHandler.addCampsite);
 
-	app.route('/api/getCampsites')
+	app.route('/api/queryCampsites')
 		.post(isLoggedIn, queryMongo.findCampsites);
 };
