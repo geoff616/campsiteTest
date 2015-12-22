@@ -1,3 +1,47 @@
+function centerIfLocationEnabled(map) {
+ // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      map.setCenter(pos);
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+}
+
+
+function makeHomepageMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 2,
+    center: {lat: -33, lng: 151}
+  });
+
+  centerIfLocationEnabled(map)
+
+  var image = '/public/img/campsite.png';
+
+  var beachMarker = new google.maps.Marker({
+    position: {lat: -33.890, lng: 151.274},
+    map: map,
+    icon: image
+  });
+
+  var newMarker = new google.maps.Marker({
+    position: {lat: -33.871, lng: 151.276},
+    map: map,
+    icon: image
+  });
+}
+
+
 //from: https://developers.google.com/maps/documentation/javascript/examples/places-searchbox
 // This example adds a search box to a map, using the Google Place Autocomplete
 // feature. People can enter geographical searches. The search box will return a
@@ -5,48 +49,18 @@
 
 
 
-function initAutocomplete() {
+function makeSearchMap() {
 
-  var map = new google.maps.Map(document.getElementById('searchMap'), {
+  var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 14.397, lng: 150.644},
       zoom: 13,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
     //var infoWindow = new google.maps.InfoWindow({map: map});
 
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        //infoWindow.setPosition(pos);
-        //infoWindow.setContent('Location found.');
-        map.setCenter(pos);
-      }, function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      });
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
+   centerIfLocationEnabled(map);
   
-//  var map = new google.maps.Map(document.getElementById('map'), {
-//    var lat,lon
-//    navigator.geolocation.getCurrentPosition(function (data) {
-//      lat = data.coords.latitude, 
-//      lon = data.coords.longitude;
-//      console.log(lat)
-//    });
-//    center: {lat: 20, lng: 20},
-    //
-//  });
 
-  //map.addListener('click', function(event) {
-    //addMarker(event.latLng);
-  //});
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
@@ -85,6 +99,7 @@ function initAutocomplete() {
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
+      
       //NOTE: Making this global, but shuold pass to a function somehow
       //ALSO: This assumes only one place has been selected, which might not be the case if
       //a user's search result has yielded many results

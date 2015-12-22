@@ -22,7 +22,7 @@
 			</div>
 			<input id="pac-input" class="controls" type="text" placeholder="Search Box">
 			<div class="addCampsite">
-				<div id="searchMap"></div>
+				<div id="map"></div>
 				<form class="form-horizontal">
 	        <div class="form-group">
 	            <label for="" class="control-label col-xs-2">Campsite URL</label>
@@ -40,10 +40,10 @@
 		</div>
 
 		
-		<script type="text/javascript" src="common/searchGoogleMaps.js"></script>
+		<script type="text/javascript" src="common/googleMaps.js"></script>
 		<script type="text/javascript" src="controllers/clickController.client.js"></script>
 		<!--NOTE: NEED TO REPLACE THIS API KEY! -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2hRixYw_r3a4kBERstBT2ieEZose6zRU&libraries=places&callback=initAutocomplete"
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2hRixYw_r3a4kBERstBT2ieEZose6zRU&libraries=places&callback=makeSearchMap"
          async defer></script>
 	</body>
 
