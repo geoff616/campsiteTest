@@ -1,12 +1,26 @@
+function addPinsToMap(campsites) {
+    var image = '/public/img/campsite.png';
+
+  _.forEach(campsites, function(campsite) {
+    var campsiteMarker = new google.maps.Marker({
+      position: {lat: campsite.location.loc[1], lng: campsite.location.loc[0]},
+      map: map,
+      icon: image
+    });
+
+  })
+
+}
 
 function displayCampsites(data) {
-  //first group by country then sort alphabetically
+  
+  //add a pin for each campsite
+  addPinsToMap(data)
+
+  //group by country then sort alphabetically
+
   var grouped = _(data).groupBy(function(site) {
-    //if (site.location.hasOwnProperty("country")) {
       return site.location.country;
-    //} else {
-      return "missing"
-    //}
   }).forEach(function(country){
     _.sortBy(country, function(site){
       return site.location.locality;
@@ -37,7 +51,9 @@ function centerIfLocationEnabled(map) {
 
 
 function makeHomepageMap() {
-  var pos, map = new google.maps.Map(document.getElementById('map'), {
+  var pos 
+  //making this global, need to figure out how to pass to jquery callback :/
+  map = new google.maps.Map(document.getElementById('map'), {
     zoom: 4,
     center: {lat: 40.730610, lng: -73.935242}
   });
@@ -69,23 +85,6 @@ function makeHomepageMap() {
     // Browser doesn't support Geolocation
 
   }
-
-  
-  
-
-  var image = '/public/img/campsite.png';
-
-  var beachMarker = new google.maps.Marker({
-    position: {lat: -33.890, lng: 151.274},
-    map: map,
-    icon: image
-  });
-
-  var newMarker = new google.maps.Marker({
-    position: {lat: -33.871, lng: 151.276},
-    map: map,
-    icon: image
-  });
 }
 
 
