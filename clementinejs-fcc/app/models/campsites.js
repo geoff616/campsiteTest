@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Campsite = new Schema({
-  //id: String, //primary key - NOTE: I think this will be there by default
+  
   location: {
     city: String,
     country: String,
