@@ -12,6 +12,23 @@ function addPinsToMap(campsites) {
 
 }
 
+function addListOfCampsites(grouped) {
+  console.log(grouped);
+
+  var list = $('ul.campsites');
+  $.each(grouped, function(country, arr) {
+    $("<li/>").text(country).appendTo(list);
+    var countryList = _.kebabCase(country) + "-list"
+    list.append("<ul id='" + countryList + "'></ul>");
+    $.each(arr, function(n, campsite) {
+      var countryListID = "#" + countryList
+       $(countryListID).append("<li>" + campsite.location.city + "</li>");
+    });
+  })
+
+
+}
+
 function displayCampsites(data) {
   
   //add a pin for each campsite
@@ -27,7 +44,8 @@ function displayCampsites(data) {
     });
   }).value();
 
-  console.log(grouped)
+  addListOfCampsites(grouped)
+
 }
 
 function centerIfLocationEnabled(map) {
