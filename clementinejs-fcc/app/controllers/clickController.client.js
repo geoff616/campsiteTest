@@ -44,8 +44,7 @@
          url: $('#campsiteURL').val(),
          location: locationObj,
       }
-      console.log(objToStore)
-      //maybe move this somewhere else?
+      
       $.ajax({
         type: "POST",
         url: "/api/addCampsite",
