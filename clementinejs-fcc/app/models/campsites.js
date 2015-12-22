@@ -3,17 +3,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-//id  ObjectId  Unique Campsite ID
-//city  string  City Name
-//country string  Country Name - Populate from Dropdown
-//subdivision string  State/Province, etc
-//coordinates object  Lat/Long object
-//google_id string  unique google id for map element
-//url string  Social Media URL (IE: Facebook Link)
-//createdBy ObjectId  FCC User who created the record
-//createdOn date  Campsite Record Creation date
-//display boolean Display/Don't Display (for Moderation)
-
 var Campsite = new Schema({
   //id: String, //primary key - NOTE: I think this will be there by default
   location: {

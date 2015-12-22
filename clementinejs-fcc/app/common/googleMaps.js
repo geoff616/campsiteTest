@@ -1,5 +1,19 @@
+
 function displayCampsites(data) {
-  console.log(data);
+  //first group by country then sort alphabetically
+  var grouped = _(data).groupBy(function(site) {
+    //if (site.location.hasOwnProperty("country")) {
+      return site.location.country;
+    //} else {
+      return "missing"
+    //}
+  }).forEach(function(country){
+    _.sortBy(country, function(site){
+      return site.location.locality;
+    });
+  }).value();
+
+  console.log(grouped)
 }
 
 function centerIfLocationEnabled(map) {
