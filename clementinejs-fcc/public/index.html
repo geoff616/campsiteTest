@@ -19,12 +19,13 @@
 
 	<body>
 	<div class="container">
-		<div>
-			<a class="menu" href="/addCampsite">Add A Campsite</a>
-			<a class="menu" href="/logout">Logout</a>
+		<div class="btn-group btn-group-justified" role="group">
+			<a href="/addCampsite" class="btn btn-primary btn-lg" id="add-campsite-button">Add a new campsite!</a>
+			<a href="/logout" class="btn btn-danger btn-lg"  id="logout-button">Logout</a>
 		</div>	
+
 	
-		<div id="map"></div>	
+		<div id="homepage-map">Loading map...</div>	
 
 		<div id="listOfCampsites">
 			<ul class="campsites">

@@ -13,6 +13,7 @@ function addPinsToMap(campsites) {
 }
 
 function addListOfCampsites(grouped) {
+
   console.log(grouped);
 
   var list = $('ul.campsites');
@@ -69,9 +70,13 @@ function centerIfLocationEnabled(map) {
 
 
 function makeHomepageMap() {
+  
+  //clear loading message
+  $("#homepage-map").empty();
+
   var pos 
   //making this global, need to figure out how to pass to jquery callback :/
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('homepage-map'), {
     zoom: 4,
     center: {lat: 40.730610, lng: -73.935242}
   });
@@ -115,7 +120,7 @@ function makeHomepageMap() {
 
 function makeSearchMap() {
 
-  var map = new google.maps.Map(document.getElementById('map'), {
+  var map = new google.maps.Map(document.getElementById('search-map'), {
       center: {lat: 40.730610, lng: -73.935242},
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP

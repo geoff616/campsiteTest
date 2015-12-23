@@ -50,9 +50,9 @@ header p {
   text-decoration: none;
   padding: 6px;
   margin: 0;
-  color: #727272;
+  color: red;
 }
-
+/***
 .menu:visited {
   color: #727272;
 }
@@ -65,15 +65,26 @@ header p {
   color: #FF630D;
 }
 
+
 header a ~ p {
   margin: 0;
   padding: 0;
   display: inline;
   color: #ECEFF1;
 }
-
+***/
 #display-name {
   font-weight: 400;
+}
+
+#add-campsite-button {
+  width: 75%;
+
+}
+#logout-button {
+  
+  width: 25%;
+
 }
 
 /****** Login Styling ******/
@@ -96,21 +107,6 @@ header a ~ p {
 .btn > img {
   float: left;
   margin-left: 10px
-}
-
-/****** Logo Div Styling ******/
-
-img {
-  margin: 0 auto;
-  display: block;
-}
-
-.clementine-text { /* Styling for the Clementine.js text */
-  padding: 0;
-  margin: -25px 0 0 0;
-  font-weight: 500;
-  font-size: 60px;
-  color: #FFA000;
 }
 
 
@@ -172,42 +168,9 @@ span {
 
 /****** Click Styling ******/
 
-.btn-container {  /* Styling for the div that contains the buttons */
-  margin: -10px auto 0 auto;
-  text-align: center;
-}
 
-.btn {  /* Styling for buttons */
-  margin: 0 8px;
-  color: white;
-  background-color: #00BCD4;
-  display: inline-block;
-  border: 0;
-  font-size: 14px;
-  border-radius: 3px;
-  padding: 10px 5px;
-  width: 100px;
-  font-weight: 500;
-}
 
-.btn:focus {  /* Remove outline when hovering over button */
-  outline: none;
-}
 
-.btn:active { /* Scale the button down by 10% when clicking on button */
-  transform: scale(0.9, 0.9);
-  -webkit-transform: scale(0.9, 0.9);
-  -moz-transform: scale(0.9, 0.9);
-}
-
-.btn-delete { /* Styling for delete button */
-  background-color: #ECEFF1;
-  color: #212121;
-}
-
-#click-nbr {
-  font-weight: 400;
-}
 
 /****** Google Maps Styling ******/
 
@@ -216,8 +179,13 @@ span {
         margin: 0;
         padding: 0;
       }******/
-#map {
-  height: 300px;
+#homepage-map {
+  height: 400px;
+  text-align: center;
+}
+
+#search-map {
+  height: 400px;
   text-align: center;
 }
 

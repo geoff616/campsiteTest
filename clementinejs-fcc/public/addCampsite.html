@@ -11,12 +11,11 @@
 		<script type="text/javascript" src="/public/js/lodash.js"></script>
 	</head>
 
-	<header>
-		<a class="menu" href="/">Home</a>
-		<p>|</p>
-		<a class="menu" href="/logout">Logout</a>
-	</header>
 		<div class="container">
+			<div class="btn-group btn-group-justified" role="group">
+				<a href="/" class="btn btn-primary btn-lg" id="add-campsite-button">Home</a>
+				<a href="/logout" class="btn btn-danger btn-lg"  id="logout-button">Logout</a>
+			</div>	
 			<div class="jumbotron">
 				<h2>Add your campsite:</h2>
 				<h4>Find the location of your campsite in the searchbox.</h4>
@@ -24,7 +23,7 @@
 			</div>
 			<input id="pac-input" class="controls" type="text" placeholder="Search Box">
 			<div class="addCampsite">
-				<div id="map"></div>
+				<div id="search-map"></div>
 				<form class="form-horizontal">
 	        <div class="form-group">
 	            <label for="" class="control-label col-xs-2">Campsite URL</label>
