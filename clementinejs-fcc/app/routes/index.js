@@ -3,6 +3,7 @@
 var path = process.cwd();
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 var QueryMongo = require(path + '/app/controllers/queryMongo.server.js');
+var handlebars = require("handlebars");
 
 module.exports = function (app, passport) {
 
@@ -19,10 +20,10 @@ module.exports = function (app, passport) {
 	var queryMongo = new QueryMongo();
 
 	app.route('/')
-		.get(isLoggedIn, function (req, res) {
+		.get(function (req, res) {
+			//isLoggedIn, function (req, res) {
 			res.sendFile(path + '/public/index.html');
 		});
-
 	app.route('/login')
 		.get(function (req, res) {
 			res.sendFile(path + '/public/login.html');
@@ -39,9 +40,15 @@ module.exports = function (app, passport) {
 			res.sendFile(path + '/public/addCampsite.html');
 		});
 
-	app.route('/api/:id')
-		.get(isLoggedIn, function (req, res) {
-			res.json({});
+	//route to determine if login or logout button should be shown on homepage
+	//This could be done a number of different ways...
+	app.route('/api/isLoggedIn')
+		.get(function (req, res) {
+			var isLoggedIn = false;
+			if (req.isAuthenticated()) {
+				isLoggedIn = true;
+			} 
+			res.end(isLoggedIn.toString());
 		});
 
 	app.route('/auth/github')
@@ -58,5 +65,5 @@ module.exports = function (app, passport) {
 		.post(isLoggedIn, clickHandler.addCampsite);
 
 	app.route('/api/queryCampsites')
-		.post(isLoggedIn, queryMongo.findCampsites);
+		.post(queryMongo.findCampsites);
 };

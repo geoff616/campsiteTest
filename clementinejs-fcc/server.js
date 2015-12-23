@@ -1,10 +1,11 @@
 'use strict';
 
 var express = require('express');
+var session = require('express-session');
+var exphbs  = require('express-handlebars');
 var routes = require('./app/routes/index.js');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var session = require('express-session');
 var bodyParser = require('body-parser');
 var moment = require('moment-timezone');
 

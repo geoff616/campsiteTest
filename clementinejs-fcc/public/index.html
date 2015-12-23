@@ -5,12 +5,14 @@
 	<head>
 		<title>Find a campsite near you!</title>
 		<link href="/public/css/bootstrap.css" rel="stylesheet" type="text/css">
-		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
 		<link href="/public/css/xeditable.css" rel="stylesheet" type="text/css">
+		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
 		<script type="text/javascript" src="/public/js/jquery.js"></script>
 		<script type="text/javascript" src="/public/js/bootstrap.js"></script>
 		<script type="text/javascript" src="/public/js/lodash.js"></script>
 		<script type="text/javascript" src="/public/js/xeditable.js"></script>
+
+		<script type="text/javascript" src="/common/loginLogout.js"></script>
 	</head>
 
 	<header>
@@ -19,9 +21,10 @@
 
 	<body>
 	<div class="container">
+		<div class="well "><h1>Free Code Camp: Campsite Registry</h1> </div>
 		<div class="btn-group btn-group-justified" role="group">
 			<a href="/addCampsite" class="btn btn-primary btn-lg" id="add-campsite-button">Add a new campsite!</a>
-			<a href="/logout" class="btn btn-danger btn-lg"  id="logout-button">Logout</a>
+			<div id="login-logout"></div>
 		</div>	
 
 	
@@ -35,7 +38,7 @@
 		
 	</div>
 	
-	<script type="text/javascript" src="common/googlemaps.js"></script>	
+	<script type="text/javascript" src="/common/googlemaps.js"></script>	
 	<!--NOTE: NEED TO REPLACE THIS API KEY! -->
 	<script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2hRixYw_r3a4kBERstBT2ieEZose6zRU&signed_in=true&callback=makeHomepageMap"></script>
