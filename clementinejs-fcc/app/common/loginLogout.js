@@ -7,21 +7,23 @@ function setLoginLogout(data) {
 
   if (data === "true") {
     //give user the option to log out
-    $("#login-logout").empty().append(logoutHtml)
+    $("#header-buttons").append(logoutHtml)
   } else {
     //give user the option to log in
-    $("#login-logout").empty().append(loginHtml)
+    $("#header-buttons").append(loginHtml)
   }
 }
 
 function showCampsiteReviewButton(data) {
+  
+// is this the right error check? Could be stricter
   if (data === "true") {
 
     //get count of pending campsites
     $.get('/api/countOfPendingCampsites', function(data) {
       if (data > 0) {
-        var modalButtonHTML = '<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#reviewModal">'+data+' campsites to review</button>'
-        $("#review-button").append(modalButtonHTML);
+        var modalButtonHTML = '<button type="button" class="btn btn-info btn-lg" id="review-button" data-toggle="modal" data-target="#reviewModal">'+data+' campsites to review</button>'
+        $("#header-buttons").append(modalButtonHTML);
       }
     })
   } 
@@ -29,12 +31,12 @@ function showCampsiteReviewButton(data) {
 }
 
 
-//this function executes on home page load to determine what options should be displayed
+//this function executes on home page load to determine what buttons should be displayed
 (function loggedInUserSettings() {
 
   $.get('/api/isLoggedIn', function(data) {
-    setLoginLogout(data);
     showCampsiteReviewButton(data);
+    setLoginLogout(data);
   })
 
 })();

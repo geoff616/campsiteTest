@@ -18,13 +18,20 @@
 
 /****** Nav Styling ******/
 
+#header-buttons {
+  width:100%;
+}
 
 #add-campsite-button {
-  width: 65%;
+  width: 60%;
 }
 
 #logout-button {
-  width: 35%;
+  width: 20%;
+}
+
+#review-button {
+  width: 20%;
 }
 
 
