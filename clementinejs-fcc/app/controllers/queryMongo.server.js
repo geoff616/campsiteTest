@@ -25,5 +25,18 @@ function QueryMongo () {
     });
 
   }
+
+  this.countPendingCampsites = function (req, res) {
+
+    Campsites.find({
+      display: false
+  }).exec(function(err, campsites) {
+      if (err) {
+        return res.status(500).json(err);
+      }
+
+      res.status(200).end(campsites.length.toString());
+    });
+  }
 }
 module.exports = QueryMongo;

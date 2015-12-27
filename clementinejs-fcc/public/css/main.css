@@ -20,16 +20,13 @@
 
 
 #add-campsite-button {
-  width: 75%;
-
-}
-.logout-button {
-  width: 25%;
+  width: 65%;
 }
 
-.login-button {
-  width: 25%;
+#logout-button {
+  width: 35%;
 }
+
 
 /****** Logo Div Styling ******/
 
