@@ -26,6 +26,7 @@ function showCampsiteReviewButton(data) {
         console.log(count);
         var modalButtonHTML = '<button type="button" class="btn btn-info btn-lg" id="review-button" data-toggle="modal" data-target="#reviewModal">'+count+' campsites to review</button>'
         $("#header-buttons").append(modalButtonHTML);
+        addEditableFieldsToModal(data);
       }
     })
   } 
