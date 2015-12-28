@@ -23,5 +23,10 @@ function ClickHandler () {
     });
     res.end('great success')
 	}
+
+    this.editCampsite = function (req, res) {
+        console.log('made it!')
+        res.end();
+    }
 }
 module.exports = ClickHandler;

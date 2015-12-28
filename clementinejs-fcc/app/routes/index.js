@@ -63,10 +63,12 @@ module.exports = function (app, passport) {
 	app.route('/api/countOfPendingCampsites')
 		.get(isLoggedIn,queryMongo.countPendingCampsites)
 
-
 	app.route('/api/addCampsite')
 		.post(isLoggedIn, clickHandler.addCampsite);
 
 	app.route('/api/queryCampsites')
 		.post(queryMongo.findCampsites);
+
+	app.route('/api/editCampsite/*')
+		.post(isLoggedIn, clickHandler.editCampsite);
 };
