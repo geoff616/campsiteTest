@@ -51,7 +51,7 @@
         data: JSON.stringify(objToStore),
         contentType: "application/json",
         dataType:'json',
-        success: function() {console.log('success')}
+        success: function() {return;}
       });
 
          
