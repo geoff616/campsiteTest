@@ -60,8 +60,8 @@ module.exports = function (app, passport) {
 			failureRedirect: '/login'
 		}));
 
-	app.route('/api/countOfPendingCampsites')
-		.get(isLoggedIn,queryMongo.countPendingCampsites)
+	app.route('/api/pendingCampsites')
+		.get(isLoggedIn,queryMongo.pendingCampsites)
 
 	app.route('/api/addCampsite')
 		.post(isLoggedIn, clickHandler.addCampsite);

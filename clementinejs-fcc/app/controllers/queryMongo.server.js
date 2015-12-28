@@ -21,7 +21,7 @@ function QueryMongo () {
 
   }
 
-  this.countPendingCampsites = function (req, res) {
+  this.pendingCampsites = function (req, res) {
 
     Campsites.find({
       display: false
@@ -30,7 +30,7 @@ function QueryMongo () {
         return res.status(500).json(err);
       }
 
-      res.status(200).end(campsites.length.toString());
+      res.status(200).json(campsites);
     });
   }
 }

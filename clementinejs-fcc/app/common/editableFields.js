@@ -1,5 +1,7 @@
 //global functions to call for each editable text field
 
+_
+
 function makeEditableTextField(campsiteID, field) {
   var divID = "#" + campsiteID + "-" + field,
   editURL = '/api/editCampsite/' + campsiteID + "/" + field,

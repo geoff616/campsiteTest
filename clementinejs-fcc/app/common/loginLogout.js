@@ -20,9 +20,11 @@ function showCampsiteReviewButton(data) {
   if (data === "true") {
 
     //get count of pending campsites
-    $.get('/api/countOfPendingCampsites', function(data) {
-      if (data > 0) {
-        var modalButtonHTML = '<button type="button" class="btn btn-info btn-lg" id="review-button" data-toggle="modal" data-target="#reviewModal">'+data+' campsites to review</button>'
+    $.get('/api/pendingCampsites', function(data) {
+      if (data.length > 0) {
+        var count = data.length.toString();
+        console.log(count);
+        var modalButtonHTML = '<button type="button" class="btn btn-info btn-lg" id="review-button" data-toggle="modal" data-target="#reviewModal">'+count+' campsites to review</button>'
         $("#header-buttons").append(modalButtonHTML);
       }
     })
