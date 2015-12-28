@@ -1,9 +1,19 @@
-$('#username').editable({
+//global function to call for each editable text field
+
+function makeEditableTextField(campsiteID, field) {
+  var divID = "#" + campsiteID + "-" + field,
+  editURL = '/api/editcampsite/' + campsiteID + "/" + field,
+  prompt = 'Enter a new ' + field;
+
+  $(divID).editable({
     type: 'text',
-    url: '/post',    
+    url: editURL,    
     pk: 1,    
-    title: 'Enter username',
+    title: prompt,
     ajaxOptions: {
-        type: 'put'
+        type: 'post'
     }        
-});
+  });
+
+}
+
