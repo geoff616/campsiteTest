@@ -78,7 +78,7 @@ function makeHomepageMap() {
   var pos 
   //making this global, need to figure out how to pass to jquery callback :/
   map = new google.maps.Map(document.getElementById('homepage-map'), {
-    zoom: 4,
+    zoom: 10,
     center: {lat: 40.730610, lng: -73.935242}
   });
 
