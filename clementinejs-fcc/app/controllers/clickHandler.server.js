@@ -25,8 +25,20 @@ function ClickHandler () {
 	}
 
     this.editCampsite = function (req, res) {
-        console.log('made it!')
-        res.end();
-    }
+        var id,field,query,update,newValue, conditions,
+        urlParts = req.path.split('/');
+        id = urlParts[3];
+        field = urlParts[4];
+        newValue = req.body.value;
+        query = {"location.googleID": id};
+        update = {[field]: newValue};
+        Campsites.findOneAndUpdate(query, update,function (err, res){
+            if (err) return console.error(err);
+            console.log(res);
+        });
+
+      res.end('great success');
+    };
 }
+
 module.exports = ClickHandler;
