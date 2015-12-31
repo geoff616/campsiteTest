@@ -9,7 +9,7 @@ function addEditableFieldsToModal(campsites) {
     var html,displayDropdown,id = campsite.location.googleID;
     div.append("<div class=\"well\" id=\"" + campsite.location.googleID +"-well\"></div>")
     var well = $("#" + id + "-well");
-    well.append("<a href=\"" + campsite.location.mapLink + "\">Google Map Link</a>")
+    well.append("<a target=\"_blank\" href=\"" + campsite.location.mapLink + "\">Google Map Link</a>")
     _.forEach(fieldsToEdit, function(field) {
       html = '<p>' +field +': <a href="#" id="' + id + '-' + field +'">' + campsite['location'][field] +' </a> </p>';  
       well.append(html);
