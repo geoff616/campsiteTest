@@ -27,7 +27,8 @@
          subdivision: addAddressComponent(loc, "administrative_area_level_1"),
          country: addAddressComponent(loc, "country"),
          loc:[globalPlace.geometry.location.lng(), globalPlace.geometry.location.lat()],
-         googleID: loc.id
+         googleID: loc.id,
+         mapLink: loc.url
       }
 
 
