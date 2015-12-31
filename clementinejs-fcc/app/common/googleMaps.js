@@ -14,9 +14,6 @@ function addPinsToMap(campsites) {
 
 function addListOfCampsites(grouped) {
 
-  console.log(grouped);
-
-
   var list = $('ul.campsites');
   $.each(grouped, function(country, arr) {
     $("<li/>").text(country).appendTo(list);

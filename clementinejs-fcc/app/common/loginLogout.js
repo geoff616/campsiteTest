@@ -23,7 +23,6 @@ function showCampsiteReviewButton(data) {
     $.get('/api/pendingCampsites', function(data) {
       if (data.length > 0) {
         var count = data.length.toString();
-        console.log(count);
         var modalButtonHTML = '<button type="button" class="btn btn-info btn-lg" id="review-button" data-toggle="modal" data-target="#reviewModal">'+count+' campsites to review</button>'
         $("#header-buttons").append(modalButtonHTML);
         addEditableFieldsToModal(data);
