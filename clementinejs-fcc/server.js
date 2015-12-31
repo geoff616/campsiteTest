@@ -2,7 +2,6 @@
 
 var express = require('express');
 var session = require('express-session');
-var exphbs  = require('express-handlebars');
 var routes = require('./app/routes/index.js');
 var mongoose = require('mongoose');
 var passport = require('passport');

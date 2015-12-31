@@ -3,7 +3,7 @@
 var path = process.cwd();
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 var QueryMongo = require(path + '/app/controllers/queryMongo.server.js');
-var handlebars = require("handlebars");
+
 
 module.exports = function (app, passport) {
 
