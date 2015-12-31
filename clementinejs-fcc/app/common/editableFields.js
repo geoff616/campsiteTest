@@ -1,16 +1,23 @@
 //global functions to call to create modal
+//TODO: clean this up
 
 function addEditableFieldsToModal(campsites) {
   var div = $("#pending"),
   fieldsToEdit = ['city', 'subdivision', 'country']
   _.forEach(campsites, function(campsite) {
     div.append("<h3>New campsite in " + campsite.location.city + "</h3>");
-    var html,id = campsite.location.googleID;
+    var html,displayDropdown,id = campsite.location.googleID;
+    div.append("<div class=\"well\" id=\"" + campsite.location.googleID +"-well\"></div>")
+    var well = $("#" + id + "-well");
+    well.append("<a href=\"" + campsite.location.mapLink + "\">Google Map Link</a>")
     _.forEach(fieldsToEdit, function(field) {
-      html = '| <a href="#" id="' + id + '-' + field +'">' + campsite['location'][field] +' </a> | ';  
-      div.append(html);
+      html = '<p>' +field +': <a href="#" id="' + id + '-' + field +'">' + campsite['location'][field] +' </a> </p>';  
+      well.append(html);
       makeEditableTextField(id,field);
     })
+    displayDropdown = '<p>Display: <a href="#" id="' + id + '-display">' + campsite['display'] +' </a> </p>'
+    well.append(displayDropdown)
+    makeEditableDisplayTrueFalse(id);
   });
 
 
@@ -33,21 +40,22 @@ function addEditableFieldsToModal(campsites) {
 
   }
 
+
   function makeEditableDisplayTrueFalse(campsiteID) {
     //name of the field in the model
     var field = "display",
     divID = "#" + campsiteID + "-" + field,
     editURL = '/api/editCampsite/' + campsiteID + "/" + field
     $(function(){
-      $('#status').editable({
+      $(divID).editable({
           type: 'select',
           pk: 1,    
           url: editURL, 
           title: "Display this campsite?",
-          value: false,    
+          value: 1,    
           source: [
-                {value: false, text: 'False'},
-                {value: true, text: 'True'}
+                {value: 1, text: 'False'},
+                {value: 2, text: 'True'}
              ]
         });
     });

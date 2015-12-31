@@ -11,7 +11,7 @@ function QueryMongo () {
     var loc = req.body
     var coords = [loc.lng, loc.lat]
 
-     Campsites.find().exec(function(err, campsites) {
+     Campsites.find({display: true}).exec(function(err, campsites) {
       if (err) {
         return res.status(500).json(err);
       }

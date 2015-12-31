@@ -61,11 +61,13 @@ function centerIfLocationEnabled(map) {
 
       map.setCenter(pos);
     }, function() {
-      handleLocationError(true,  map.getCenter());
+      //handleLocationError(true,  map.getCenter());
+      return;
     });
   } else {
     // Browser doesn't support Geolocation
-    handleLocationError(false, map.getCenter());
+    return;
+    //handleLocationError(false, map.getCenter());
   }
 }
 
