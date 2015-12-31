@@ -14,6 +14,7 @@ function ClickHandler () {
     objToStore['createdAtDisplay'] = moment().tz('America/New_York').format('MMMM Do YYYY, h:mm:ss a') 
     objToStore['createdAtTimestamp'] = moment().tz('America/New_York').format('x') //#eastcoastbias!
     objToStore['display'] = false;
+    objToStore['deleted'] = false;
 
 		var newCampsite = new Campsites(objToStore);
 

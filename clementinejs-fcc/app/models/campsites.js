@@ -18,7 +18,8 @@ var Campsite = new Schema({
   createdByUsername: String,
   createdAtDisplay : String, 
   createdAtTimestamp : Date,
-  display: Boolean //for moderator
+  display: Boolean, //for moderator to set to visible
+  deleted: Boolean
 });
 
 module.exports = mongoose.model('Campsite', Campsite);

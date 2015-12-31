@@ -15,9 +15,16 @@ function addEditableFieldsToModal(campsites) {
       well.append(html);
       makeEditableTextField(id,field);
     })
+
+    //display dropdown
     displayDropdown = '<p>Display: <a href="#" id="' + id + '-display">' + campsite['display'] +' </a> </p>'
     well.append(displayDropdown)
-    makeEditableDisplayTrueFalse(id);
+    makeEditableDisplayTrueFalse(id, "display", "Display this campsite to users?");
+
+    //deleted dropdown
+    displayDropdown = '<p>Deleted: <a href="#" id="' + id + '-deleted">' + campsite['display'] +' </a> </p>'
+    well.append(displayDropdown)
+    makeEditableDisplayTrueFalse(id, "deleted", "This will leave in the DB but hide from this view and not show to users");
   });
 
 
@@ -41,17 +48,16 @@ function addEditableFieldsToModal(campsites) {
   }
 
 
-  function makeEditableDisplayTrueFalse(campsiteID) {
-    //name of the field in the model
-    var field = "display",
-    divID = "#" + campsiteID + "-" + field,
-    editURL = '/api/editCampsite/' + campsiteID + "/" + field
+  function makeEditableDisplayTrueFalse(googleID, field, message) {
+
+    var divID = "#" + googleID + "-" + field,
+    editURL = '/api/editCampsite/' + googleID + "/" + field
     $(function(){
       $(divID).editable({
           type: 'select',
           pk: 1,    
           url: editURL, 
-          title: "Display this campsite?",
+          title: message,
           value: 1,    
           source: [
                 {value: 1, text: 'False'},

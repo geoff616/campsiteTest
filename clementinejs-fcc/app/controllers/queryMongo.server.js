@@ -11,7 +11,10 @@ function QueryMongo () {
     var loc = req.body
     var coords = [loc.lng, loc.lat]
 
-     Campsites.find({display: true}).exec(function(err, campsites) {
+     Campsites.find({
+      display: true,
+      deleted: false
+    }).exec(function(err, campsites) {
       if (err) {
         return res.status(500).json(err);
       }
@@ -24,7 +27,8 @@ function QueryMongo () {
   this.pendingCampsites = function (req, res) {
 
     Campsites.find({
-      display: false
+      display: false,
+      deleted: false
   }).exec(function(err, campsites) {
       if (err) {
         return res.status(500).json(err);
