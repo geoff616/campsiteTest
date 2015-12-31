@@ -4,7 +4,6 @@ var path = process.cwd();
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 var QueryMongo = require(path + '/app/controllers/queryMongo.server.js');
 
-
 module.exports = function (app, passport) {
 
 	

@@ -26,16 +26,32 @@ function ClickHandler () {
 	}
 
     this.editCampsite = function (req, res) {
-        var id,field,query,update,newValue, conditions,
+        var id,fieldName,field,query,update,newValue, conditions,
         urlParts = req.path.split('/');
         id = urlParts[3];
         field = urlParts[4];
-        newValue = req.body.value;
+        if (field === "display" || field === "deletd" ) {
+            //when client says 2, set to true
+            if (req.body.value === '2') {
+                newValue = true;
+            } else {
+                newValue = false;
+            }
+            //no prefix needed
+            fieldName = field;
+
+        } else {
+            //all location fields being edited
+            newValue = req.body.value;
+            //add prefix
+            fieldName = "location." + field;
+        }
+        
         query = {"location.googleID": id};
-        update = {[field]: newValue};
+        update = {[fieldName]: newValue};
+
         Campsites.findOneAndUpdate(query, update,function (err, res){
             if (err) return console.error(err);
-            console.log(res);
         });
 
       res.end('great success');
